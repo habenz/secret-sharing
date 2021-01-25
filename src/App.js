@@ -1,25 +1,43 @@
-import logo from './logo.svg';
+import React, { Component } from 'react';
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Link
+} from "react-router-dom";
+
+import GetSecret from './components/GetSecret'
+import MakeSecret from './components/MakeSecret'
+
 import './App.css';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class App extends Component{
+
+  render() {
+    return (
+     <Router>
+          <div>
+            <nav>
+              <ul>
+                <li><Link className="link" to="/">Make Secret</Link></li>
+                <li><Link className="link" to="/get">Retrieve Secret</Link></li>
+              </ul>
+            </nav>
+
+            {/* A <Switch> looks through its children <Route>s and
+                renders the first one that matches the current URL. */}
+            <Switch>
+              <Route path="/get">
+                <GetSecret />
+              </Route>
+              <Route path="/">
+                <MakeSecret />
+              </Route>
+            </Switch>
+          </div>
+        </Router>
+    )   
+  }
 }
 
 export default App;

@@ -3,7 +3,7 @@
 It's based off of the 'shamir' npm module: https://www.npmjs.com/package/shamir which encrypts character by character.
 
 ## Current functionality
-2 pages:
+### 2 pages:
 * one for encryption (with number of shares being the same as the size of the quorum needed)
 * one for decryption (with cipher text being a space separated list of 8-bit unsigned ints)
 
@@ -13,6 +13,10 @@ It's based off of the 'shamir' npm module: https://www.npmjs.com/package/shamir 
 
 ## Dream goals
 * Write custom implementation of encryption algorithm 
+
+##### sources:
+	- main library: https://github.com/simbo1905/shamir
+	- https://en.wikipedia.org/wiki/Shamir's_Secret_Sharing
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 

@@ -1,4 +1,10 @@
 /*Nav styles should be ok just working on tags*/
+nav {
+  border: solid lightgrey .1rem;
+  border-radius: .25rem;
+  margin: .1rem;
+  margin-bottom: 1rem;
+}
 
 nav ul {
   list-style: none;
@@ -7,12 +13,13 @@ nav ul {
 }
 
 nav ul li {
-  margin: 1rem;
+  margin: 0 1rem;
   padding: .3rem;
-  border: solid black .1rem;
+  border: solid lightgrey .1rem;
   border-radius: .5rem;
 }
 
 .link {
   text-decoration: none;
+  color: slategrey;
 }

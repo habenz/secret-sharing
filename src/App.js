@@ -3,24 +3,35 @@ import {
   BrowserRouter as Router,
   Switch,
   Route,
-  Link
+  NavLink
 } from "react-router-dom";
 
 import GetSecret from './components/GetSecret'
 import MakeSecret from './components/MakeSecret'
+import ExplainerModal from './components/ExplainerModal';
 
 import './App.css';
 
 class App extends Component{
 
+  state = {
+    explainerModal: true
+  }
+
+  closeModal = () => {
+    this.setState({explainerModal:false});
+  }
+
   render() {
     return (
      <Router>
+        {this.state.explainerModal? <ExplainerModal close={this.closeModal}/>: ''}
+
           <div>
             <nav>
               <ul>
-                <li><Link className="link" to="/">Make Secret</Link></li>
-                <li><Link className="link" to="/get">Retrieve Secret</Link></li>
+                <li><NavLink activeStyle={{color:"black"}} className="link" to="/make">Make Secret</NavLink></li>
+                <li><NavLink activeStyle={{color:"black"}} className="link" to="/get">Retrieve Secret</NavLink></li>
               </ul>
             </nav>
 

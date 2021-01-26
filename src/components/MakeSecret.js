@@ -1,28 +1,23 @@
 import React, { Component } from 'react';
+import LabeledTextInput from './LabeledTextInput';
+import CipherText from './CipherText';
 import styles from './MakeSecret.module.css';
-import ExplainerModal from './ExplainerModal';
 
 import { split } from 'shamir';
 const crypto = require('crypto');
 // import {randomBytes} from 'crypto'
 // crypto is deprecated and there's a built in node.js module now
 
-
+// XX comments come from example code from 
 class MakeSecret extends Component {
 	state = {
-		// enteredSecret: false,
 		secret: '',
 		shares: '',
-		output: '',
-		explainerModal: true
-		// decrypted: ''
-	}
-	closeModal = () => {
-		this.setState({explainerModal:false});
+		output: ''
 	}
 
 	doIt = (secret, shares) => {
-	    // you can use any polyfill to covert string to Uint8Array
+	    // XX: you can use any polyfill to covert string to Uint8Array
 	    const utf8Encoder = new TextEncoder();
 	    const secretBytes = utf8Encoder.encode(secret);
 	    // parts is a object whose keys are the part number and values are an Uint8Array
@@ -47,41 +42,24 @@ class MakeSecret extends Component {
 	}
 	render() {
 		return (
-			<div >
-				{this.state.explainerModal? <ExplainerModal close={this.closeModal}/>: ''}
-				<label htmlFor="secret">Enter Your Secret Here!</label> 
-				<input type="text" 
-						name="secret" id="secret" 
-						value={this.state.secret} 
-						onChange={this.handleInput}/>
+			<div className={styles.wrapper}>
+				<LabeledTextInput name="secret" size="large"
+								value={this.state.secret}
+								changeFunc={this.handleInput}
+				/>
 
-				<label htmlFor="shares"> Number of Shares</label>
-				<input type="number" 
+				<div className={styles.smallInput}>
+					<label htmlFor="shares"> Number of Shares</label>
+					<input type="number" 
 						name="shares" id="shares" 
 						value={this.state.shares} 
 						onChange={this.handleInput}/>
-
-				<button onClick={this.encrypt}>Encode Secret</button>
+				</div>
+				<button onClick={this.encrypt} className={styles.encryptBtn}>Encrypt Secret</button>
 
 				{this.state.output? <CipherText shares={this.state.output}/> : ''}
 			</div>
 			)
-	}
-}
-
-class CipherText extends Component {
-	render() {
-		const toRender = [];
-		for (const share of Object.values(this.props.shares)) {
-			// need to covert to normal array so map function will work with JSX (I think)
-			const arr = Array.from(share) 
-			toRender.push(<p>{arr.map((num)=><span>{num} </span>)}</p>) 
-		}
-		return (
-			<div>
-				{toRender}
-			</div>
-		);
 	}
 }
 

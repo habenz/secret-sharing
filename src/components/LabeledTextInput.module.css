@@ -1,0 +1,17 @@
+.large input {
+	width: 70vw;
+	padding: .25rem;
+	font-size: 105%; 
+}
+
+.small input {
+	width: 30vw;
+}
+
+.label {
+	margin-right: .5rem;
+}
+
+.wrapper{
+	margin-bottom: 1rem;
+}

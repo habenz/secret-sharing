@@ -46,17 +46,14 @@ class GetSecret extends Component {
 			<div >
 				<p>I'm getting a secret rn <button onClick={this.addInput}>+</button></p>
 
-				{/*<label htmlFor="input1">Key Share 1:</label>
-				<input type="text" value={this.state.input1} name="input1" id="input1" onChange={this.handleInput}/>
-				*/}
 				{Object.entries(this.state.inputs).map(([key,value],i)=>{
 					const uid = key.match(/\d+/);
 					return(
-						<>
+						<div>
 						<label htmlFor={key}>Key Share {i+1}:</label>
 						<input key={uid} type="text" value={this.state.inputs.key} name={key} id={key} onChange={this.handleInput}/>
 						<button onClick={() => this.removeInput(key)}>-</button>
-						</>
+						</div>
 						)
 				})}
 

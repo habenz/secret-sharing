@@ -6,7 +6,12 @@ class ExplainerModal extends Component {
 		return (
 			<div className={styles["modal-container"]}>
 				<div className={styles.modal}> 
-					I'm a modal!
+					Here should go an explantion of Shamir Secret Sharing.
+					<br/>
+					For now the wikipedia explanation is pretty great:
+					<br/>
+					<a href="https://en.wikipedia.org/wiki/Shamir%27s_Secret_Sharing#High-level_explanation"> Shamir Secret Sharing</a>
+					<br/><br/>
 					<button onClick={this.props.close}>Start Encrypting!</button>
 				</div>
 			</div>
